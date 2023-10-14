@@ -26,7 +26,7 @@ func init() {
     lastTwoImages = make([]string, 2)
     rand.Seed(time.Now().UnixNano()) // Seed the random number generator
 	 var err error
-    tmpl, err = template.New("").ParseFiles("./templates/image.html")
+    tmpl, err = template.New("").ParseFiles("/templates/image.html")
     if err != nil {
         fmt.Printf("Error parsing templates: %v", err)
     }
