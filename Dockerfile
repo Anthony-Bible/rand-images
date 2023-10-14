@@ -14,7 +14,7 @@ RUN apk add --no-cache ca-certificates
 
 COPY --from=builder /app/server /server
 COPY --from=builder /app/images /images
-
+COPY --from=builder /app/templates /templates
 
 CMD ["/server"]
 

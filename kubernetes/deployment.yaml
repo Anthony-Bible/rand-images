@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rand-images-deployment
+  labels:
+    app: rand-images
+spec:
+  selector:
+    matchLabels:
+      app: rand-images
+  template:
+    metadata:
+      labels:
+        app: rand-images
+    spec:
+      containers:
+      - name: rand-images-container
+        image: ghcr.io/anthony-bible/rand-images:latest
+        imagePullPolicy: "Always"
+        env: 
+          - name: IMAGE_ID
+            valueFrom:
+              secretKeyRef:
+                key: IMAGE_ID
+                name: test-secret
+          - name: IMAGE_KEY
+            valueFrom:
+              secretKeyRef:
+                key: IMAGE_KEY
+                name: test-secret
