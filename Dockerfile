@@ -1,3 +1,4 @@
+LABEL org.opencontainers.image.source=https://github.com/anthony-bible/rand-images
 FROM golang:1.21.2-bookworm as builder
 
 WORKDIR /app
