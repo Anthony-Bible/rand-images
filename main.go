@@ -43,6 +43,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
     // Update lastTwoImages to remember the last two served images
     lastTwoImages[0], lastTwoImages[1] = lastTwoImages[1], randomFile.Name()
+	fmt.Printf("using image %s", randomFile.Name())
     mutex.Unlock()
 
     http.ServeFile(w, r, fmt.Sprintf("./images/%s", randomFile.Name()))
