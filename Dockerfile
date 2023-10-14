@@ -4,7 +4,9 @@ LABEL org.opencontainers.image.source=https://github.com/anthony-bible/rand-imag
 WORKDIR /app
 copy . .
 
-RUN go build -o server
+#RUN go build -o server
+RUN CGO_ENABLED=0 go build -o server -a -ldflags '-extldflags "-static"'
+
 
 FROM alpine:3.14
 
