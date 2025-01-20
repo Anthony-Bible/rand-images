@@ -59,7 +59,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	// Update lastTwoImages to remember the last two served images
 	lastTwoImages[0], lastTwoImages[1] = lastTwoImages[1], *randomObject.Key
 	fmt.Printf("using image %s\n", *randomObject.Key)
-	imageURL := url.QueryEscape(fmt.Sprintf("https://photos.anthony.bible/file/%s/%s", bucketName, *randomObject.Key))
+	imageURL := fmt.Sprintf("https://photos.anthony.bible/file/%s/%s", bucketName, url.QueryEscape(*randomObject.Key))
 	mutex.Unlock()
 	//http.Redirect(w, r, urlStr, http.StatusTemporaryRedirect)
 	redirectParam := r.URL.Query().Get("redirect")
